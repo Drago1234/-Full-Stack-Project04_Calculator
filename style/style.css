@@ -1,0 +1,158 @@
+/**
+ * This file was implemented by Yi on 06/24. Split out from calculator.html
+ */
+/*Update by Zhengqi on 07/03, 2019: added css style for Memory*/
+/*Update by Zhengqi on 07/04, 2019: added more css style for Memory and history*/
+
+
+html {
+  background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%; 
+}
+
+body{
+  min-width: 1250px;
+}
+
+.main{
+  margin: black;
+  background-color: black;
+  font: Arial;
+  margin: 20px auto;
+}
+.topbar{
+  margin: 20px auto;
+  color:grey;
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 2em;
+}
+
+div.left, div.right{
+  float: left;
+  width: 29.8%;
+  height: 780px;
+}
+
+button.skin {
+  background-image: linear-gradient(to top, #dad4ec 0%, #dad4ec 1%, #f3e7e9 100%);
+  border-radius: 40px;
+  font-size: 30px;
+  height: 75px;
+  width: 20%;
+  margin: 0px 40% 40px 40%;
+}
+
+.left button:hover {
+  background-image: linear-gradient(to top, #270883 0%, #55477d 1%, #f3e7e9 100%);
+}
+
+.left button:active {
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.calculator{
+  float: left;
+  width: 40%;
+  margin: 0px auto;
+  border: 2px solid #dbf4ea;  
+}
+
+textarea{
+  resize: none;
+  text-align: right;
+  font-size: 1.5em;
+  background-image: linear-gradient(to top, #dad4ec 0%, #dad4ec 1%, #f3e7e9 100%);
+  height:420px;
+  width: 80%;
+  margin: 0px  10%;
+}
+
+textarea#memory_area{
+  font-size: 1.0em;
+  font-family: sans-serif;
+  text-align: left;
+  height:40px;
+  width: 80%;
+  margin: 60px  10%;
+}
+
+.result, .formula {
+  border: 1px solid white;
+  background-image: linear-gradient(to top, #dad4ec 0%, #dad4ec 1%, #f3e7e9 100%);
+}
+
+.result {
+  text-align: right;
+  font-size: 50px;
+  overflow: hidden;
+  height: 50px;
+  margin: 10px;
+}
+.formula{
+  text-align: right;
+  letter-spacing: 2px;
+  font-size: 20px;
+  overflow: hidden;
+  height: 25px;
+  margin: 10px;
+}
+
+/*Memory display window*/
+div#historyBox, div#memoryBox{
+  overflow: auto;
+  margin: 0px 20px 0px;
+  border: 2px solid #dbf4ea;  
+  width: 150px;
+  height: 300px;
+}
+
+div#memoryTitle, div#historyTitle
+{
+  text-align: left;
+  font-size: 20px;
+  font-family: sans-serif;
+}
+
+div#memoryValue, div#historyValue{
+  text-align: left;
+  font-size: 20px;
+  font-family: sans-serif;
+  color: black;
+}
+
+
+.table{
+  text-align: center;
+  height: 500px;
+  width:98%; margin: 1%;
+}
+
+.table button {
+  overflow: hidden;
+  border-radius: 20px;
+  font-size: 30px;
+  height: 75px;
+  width: 100%;
+  background-image: linear-gradient(to top, #dad4ec 0%, #dad4ec 1%, #f3e7e9 100%);
+}
+.table button:hover {
+  background-image: linear-gradient(to top, #270883 0%, #55477d 1%, #f3e7e9 100%);
+}
+
+.table button:active {
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+td {
+  width: 20%;
+}
+#currentTrigMode {
+text-align: center;
+font-weight: bold;
+
+}

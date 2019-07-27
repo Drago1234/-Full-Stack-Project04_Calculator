@@ -1,0 +1,126 @@
+<!-- Created by Zhengqi on 07/04 -->
+<!-- This file is to test memory function (mc, mr, ms, m+, m-, result and display box) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Test_Memory_buttons</title>
+</head>
+<body>
+  <h1>Test plan for memory operation and memory/result display windom</h1>
+  <p>If start with clear memory, the display box should show "Nothing store in memory!"</p>
+  <ul>Memory Store(MS) test1
+    <li>Key Pressed: MS</li>
+    <li>Showed on result:  memory = 0</li>
+    <li>Expected result:  memory = 0</li>
+  </ul>
+  <ul>Memory Store(MS) test2
+    <li>Key Pressed: 9 MS</li>
+    <li>Showed on result: memory = 9</li>
+    <li>Expected result: memory = 9</li>
+  </ul>
+  <ul>Memory Store(MS) test3
+    <li>Key Pressed:  9 + MS</li>
+    <li>Showed on result: memory = 9</li>
+    <li>Expected result:  memory = 9</li>
+  </ul>
+  <ul>Memory Store(MS) test4
+    <li>Key Pressed: 9 + 1 MS</li>
+    <li>Showed on result: memory = 1</li>
+    <li>Expected result: memory = 1</li>
+  </ul>
+  <ul>Memory Store(MS) test5
+    <li>Key Pressed: 9 + 1 = MS</li>
+    <li>Showed on result: memory = 10</li>
+    <li>Expected result: memory = 10</li>
+  </ul>
+
+  <ul>Memory Clear(MC) test1
+    <li>Key Pressed: MC</li>
+    <li>Showed on result: result = 0</li>
+    <li>Expected result: result = 0</li>
+  </ul>  
+  <ul>Memory Clear(MC) test2
+    <li>Key Pressed: 7 MS MR</li>
+    <li>Showed on result: result = 7</li>
+    <li>Expected result: result = 7</li>
+  </ul> 
+
+  <ul>Memory recall(MR) test1
+    <li>Key Pressed: MR</li>
+    <li>Showed on result: result = 0</li>
+    <li>Expected result: </li>
+  </ul>
+  <ul>Memory recall(MR) test2
+    <li>Key Pressed: 7 MS MR</li>
+    <li>Showed on result: result = 7</li>
+    <li>Expected result: </li>
+  </ul>
+
+
+  <ul>Memory plus(M+) test1
+    <li>Key Pressed: M+</li>
+    <li>Showed on result: memory = 0</li>
+    <li>Expected result: memory = 0</li>
+  </ul>
+  <ul>Memory plus(M+) test2
+    <li>Key Pressed: 7 M+</li>
+    <li>Showed on result: memory = 7</li>
+    <li>Expected result: memory = 7</li>
+  </ul>
+  <ul>Memory plus(M+) test3
+    <li>Key Pressed: 7 M+ M+ M+</li>
+    <li>Showed on result:memory = 21</li>
+    <li>Expected result: memory = 21</li>
+  </ul>
+  <ul>Memory plus(M+) test4
+    <li>Key Pressed: 8 M- M+</li>
+    <li>Showed on result: memory = 0</li>
+    <li>Expected result: memory = 0</li>
+  </ul>
+  <ul>Memory plus(M+) test5
+    <li>Key Pressed: 3.14 M+</li>
+    <li>Showed on result: memory = 6.28</li>
+    <li>Expected result: memory = 6.28</li>
+  </ul>
+
+
+  <ul>Memory subtract(M-) test1
+    <li>Key Pressed: M-</li>
+    <li>Showed on result: memory = 0</li>
+    <li>Expected result: memory = 0</li>
+  </ul>
+  <ul>Memory subtract(M-) test2
+    <li>Key Pressed: 7 M-</li>
+    <li>Showed on result: memory = -7</li>
+    <li>Expected result: memory = -7</li>
+  </ul>
+  <ul>Memory subtract(M-) test3
+    <li>Key Pressed: 7 M- M- M-</li>
+    <li>Showed on result:memory = -21</li>
+    <li>Expected result: memory = -21</li>
+  </ul>
+  <ul>Memory subtract(M-) test4
+    <li>Key Pressed: 8 M+ M-</li>
+    <li>Showed on result: memory = 0</li>
+    <li>Expected result: memory = 0</li>
+  </ul>
+  <ul>Memory subtract(M-) test5
+    <li>Key Pressed: 3.14 M-</li>
+    <li>Showed on result: memory = -3.14</li>
+    <li>Expected result: memory = -3.14</li>
+  </ul>
+
+</body>
+<script src="../script/script.js"></script>
+<script src="../script/binary_operator.js"></script>
+<script src="../script/unary_operator.js"></script>
+<script src="../script/clear_keys.js"></script>
+<script src="../script/memory_keys.js"></script>
+<script src="../script/evaluate.js"></script>
+<script src="../script/test_keys.js"></script>
+<script src="../script/number_keys.js"></script>
+<script src="../script/night_mode.js"></script>
+</html>

@@ -1,0 +1,153 @@
+<!-- Created by Yi on 07/04 -->
+<!-- This file is to test basic binary functions (+-×÷ and .0123456789 and =) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Test_Binary_Number_Evaluate</title>
+</head>
+<body>
+  <h1>Test plan for binary operation, number key and evaluate</h1>
+  <ul>Test1
+    <li>Key Pressed: 1+1</li>
+    <li>Showed on result: ""</li>
+    <li>Expected result: ""</li>
+  </ul>
+  <ul>Test2
+      <li>Key Pressed: 1+1=</li>
+      <li>Showed on result: "2"</li>
+      <li>Expected result: "2"</li>
+  </ul>
+  <ul>Test3
+      <li>Key Pressed: =</li>
+      <li>Showed on result: "0"</li>
+      <li>Expected result: "0"</li>
+  </ul>
+  <ul>Test4
+      <li>Key Pressed: .1=</li>
+      <li>Showed on result: "0.1"</li>
+      <li>Expected result: "0.1"</li>
+  </ul>
+  <ul>Test5
+      <li>Key Pressed: 0.1+9+6=</li>
+      <li>Showed on result: "15.1"</li>
+      <li>Expected result: "15.1"</li>
+  </ul>
+  <ul>Test6
+      <li>Key Pressed: 1+1+</li>
+      <li>Showed on result: "2"</li>
+      <li>Expected result: "2"</li>
+  </ul>
+  <ul>Test6
+      <li>Key PressedPressed: 9/0 </li>
+      <li>Showed on result: "0" with warning on formula</li>
+      <li>Expected result: "0" with warning on formula</li>
+  </ul>
+  <ul>Test7
+      <li>Key Pressed: 3.4*=</li>
+      <li>Showed on result: "11.56"</li>
+      <li>Expected result: "11.56" (same as microsoft calculator)</li>
+  </ul>
+  <ul>Test8
+      <li>Key Pressed: 9999999999999999*9999999999999=</li>
+      <li>Showed on result: "0" with "Overflow!" on formula</li>
+      <li>Expected result: "0" with "Overflow!" on formula</li>
+  </ul>
+  <ul>Test9
+      <li>Key Pressed: -.1+</li>
+      <li>Showed on result: "-0.1"</li>
+      <li>Expected result: "-0.1"</li>
+  </ul>
+  <ul>Test10
+      <li>Key Pressed: .1....2....=</li>
+      <li>Showed on result: "0.12"</li>
+      <li>Expected result: "0.12"</li>
+  </ul>
+  <ul>Test11
+      <li>Key Pressed: +++++1=</li>
+      <li>Showed on result: "1"</li>
+      <li>Expected result: "1"</li>
+  </ul>
+  <ul>Test12
+      <li>Key Pressed: 1+++++++3+++=</li>
+      <li>Showed on result: "4"</li>
+      <li>Expected result: "4"</li>
+  </ul>
+  <ul>Test12
+    <li>Key Pressed: 5*+2=</li>
+    <li>Showed on result: "27"</li>
+    <li>Expected result: "27"</li>
+</ul>
+</body>
+<script src="../script/script.js"></script>
+<script src="../script/binary_operator.js"></script>
+<script src="../script/unary_operator.js"></script>
+<script src="../script/clear_keys.js"></script>
+<script src="../script/memory_keys.js"></script>
+<script src="../script/evaluate.js"></script>
+<script src="../script/test_keys.js"></script>
+<script src="../script/number_keys.js"></script>
+<script src="../script/night_mode.js"></script>
+<script>
+  document.write("<h1>Test inside of Javascript</h1>");
+
+
+  document.write("<br />TEST EQUAL: 3 ");
+  document.write(add(1,2));
+
+  document.write("<br />TEST EQUAL: 0 ");
+  document.write(add(Number.MAX_SAFE_INTEGER,Number.MIN_SAFE_INTEGER));
+
+  document.write("<br />TEST EQUAL: 9007199254740991 ");
+  document.write(add(Number.MAX_SAFE_INTEGER,0));
+
+  document.write("<br />TEST EQUAL: 18014398509481982 ");
+  document.write(add(Number.MAX_SAFE_INTEGER,Number.MAX_SAFE_INTEGER));
+  
+  document.write("<br />TEST EQUAL: -1 ");
+  document.write(minus(1,2));
+  
+  document.write("<br />TEST EQUAL: 0 ");
+  document.write(minus(Number.MAX_SAFE_INTEGER,Number.MAX_SAFE_INTEGER));
+  
+  document.write("<br />TEST EQUAL: 0 ");
+  document.write(multiply(Number.MAX_SAFE_INTEGER,0));
+  
+  document.write("<br />TEST EQUAL:  -9007199254740991 ");
+  document.write(multiply(Number.MAX_SAFE_INTEGER,-1));
+
+  document.write("<br />TEST EQUAL:  -9007199254740991 ");
+  document.write(multiply(Number.MIN_SAFE_INTEGER,1));
+
+  document.write("<br />TEST EQUAL:  NAN ");
+  document.write(divide(Number.MAX_SAFE_INTEGER,0));
+
+  document.write("<br />TEST EQUAL:  1 ");
+  document.write(divide(Number.MAX_SAFE_INTEGER, Number.MAX_SAFE_INTEGER));
+
+  document.write("<br />TEST EQUAL:  -9007199254740991 ");
+  document.write(divide(Number.MAX_SAFE_INTEGER,-1));
+
+  document.write("<br />TEST EQUAL:  9007199254740991 ");
+  document.write(holdValue(Number.MAX_SAFE_INTEGER,13243124));
+
+  document.write("<br />TEST EQUAL:  -9007199254740991 ");
+  document.write(holdValue(Number.MIN_SAFE_INTEGER, Number.MAX_SAFE_INTEGER));
+
+  document.write("<br />TEST EQUAL:  0 ");
+  document.write(holdValue(0,-1));
+
+  document.write("<br />TEST EQUAL: ");
+  document.write(add(0,add(1, add(2,3))));
+  document.write(" ");
+  document.write(add(3,add(2, add(1,0))));
+
+  document.write("<br />TEST EQUAL: -5 ");
+  document.write(add(0,minus(1, multiply(2,3))));
+
+  document.write("<br />TEST EQUAL: 8.76 ");
+  document.write(multiply(-1.2,minus(1.7, multiply(2.5,3.6))));
+</script>
+</html>

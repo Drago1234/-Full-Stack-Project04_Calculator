@@ -1,0 +1,295 @@
+<!-- Created by Yi on June 24, 2019-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Calculator</title>
+  <style>
+body{
+  background-color: black;
+}
+.main{
+  margin: black;
+  background-color: black;
+  font: Arial;
+  margin: 0;
+}
+.topbar{
+color:white;
+text-align: center;
+}
+.calculator{
+  width: 600px;
+  margin: 50px auto;
+  float: center;
+  background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+  border:2px solid gray;
+}
+.result, .formula{
+  height: 40px;
+  margin: 5px;
+  border: 2px solid gray;
+}
+.table{
+  text-align: center;
+  height: 500px;
+  width:98%; margin: 1%;
+  border: 2px solid gray;
+}
+td {
+  border: 2px solid gray;
+}
+button {
+  font-size: large;
+  height: 80px;
+  width: 100%;
+}
+  </style>
+</head>
+<body>
+  <div class="main">
+    <div class="topbar">
+      Comming Soon
+    </div>
+    <div class="calculator">
+      <div class="screen">
+        <div class="result">
+          <p id="result">
+          </p>
+        </div>
+        <div class="formula">
+          <p id="formula">
+          </p>
+        </div>
+      </div>
+      <div class="buttons">
+        <table class="table">
+          <tr>
+            <td><button class = "memory" id = "M" >M</button></td>
+            <td><button class = "memory" id = "MR" >MR</button></td>
+            <td><button class = "memory" id = "M+" >M+</button></td>
+            <td><button class = "memory" id = "M-" >M-</button></td>
+            <td><button class = "memory" id = "MS" >MS</button></td>
+          </tr>
+          <tr>
+            <td><button class = "clear" id = "C" >C</button></td>
+            <td><button class = "clear" id = "CE" >CE</button></td>
+            <td><button class = "clear" id = "DEL" >DEL</button></td>
+            <td><button class = "extra" id = "√" >√</button></td>
+            <td><button class = "extra" id = "NEG" >NEG</button></td>
+          </tr>
+          <tr>
+            <td><button  class = "extra" id = "X^2" >X^2</button></td>
+            <td><button class = "number" id = "7" >7</button></td>
+            <td><button class = "number" id = "8" >8</button></td>
+            <td><button class = "number" id = "9" >9</button></td>
+            <td><button class = "binary" id = "+" >+</button></td>
+          </tr>
+          <tr>
+            <td><button class = "extra" id = "%" >%</button></td>
+            <td><button class = "number" id = "4" >4</button></td>
+            <td><button class = "number" id = "5" >5</button></td>
+            <td><button class = "number" id = "6" >6</button></td>
+            <td><button class = "binary" id = "-" >-</button></td>
+          </tr>
+          <tr>
+            <td><button class = "extra" id = "^" >x^y</button></td>
+            <td><button class = "number" id = "1" >1</button></td>
+            <td><button class = "number" id = "2" >2</button></td>
+            <td><button class = "number" id = "3" >3</button></td>
+            <td><button class = "binary" id = "*" >×</button></td>
+          </tr>
+          <tr>
+            <td><button class = "extra" id = "1/x" >1/x</button></td>
+            <td><button class = "number" id = "." >.</button></td>
+            <td><button class = "number" id = "0" >0</button></td>
+            <td><button class = "equal" id = "=" >=</button></td>
+            <td><button class = "binary" id = "/" >÷</button></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+
+<script type="text/javascript">
+  var first = ""; // first number: string of integer
+  var second = ""; // second number: string of integer
+  var operator = null; //a pointer that points to a function 
+  var result = null; // store result, null or number
+  var formula = ""; // display formula
+  
+  const numberKeys = document.getElementsByClassName("number");
+  const memoryKeys = document.getElementsByClassName("memory");
+  const extraKeys = document.getElementsByClassName("extra");
+  const binaryKeys = document.getElementsByClassName("binary");
+  const clearKeys = document.getElementsByClassName("clear");
+  // Check if this is a valid number. 
+  function isValidNum (number) {
+    return number>Number.MIN_SAFE_INTEGER && number<Number.MAX_SAFE_INTEGER && number != null;
+  }
+  // Render the latest result to screen
+  function updateResult() {
+    if (isValidNum(result)) document.getElementById("result").innerHTML = result;
+    else document.getElementById("result").innerHTML = 0;
+  };
+  // Render the latest formula to screen
+  function updateFormula() {
+    document.getElementById("formula").innerHTML = formula;
+  };
+  // Restore first, second, operator, result, formula and update displays
+  function clear(){
+    first = ""; 
+    second = ""; 
+    operator = null;
+    result = null; 
+    formula = ""; 
+    updateFormula();
+    updateResult();
+  }
+  // restore the second number and update the screen
+  function clearSecond() {
+    second = ""; 
+    updateFormula();
+  }
+  // delete the last entered digit
+  function del() {
+    if ("123456789.".contains(formula.charAt(formula.length - 1))) {
+      formula.slice(0, -1);
+      if (!"0123456789".contains(formula.charAt(formula.length - 1))) formula += "0";
+    }
+    if (operator == null) first = first=="" ? first : first.slice(0, -1);
+    else second = second == "" ? second : second.slice(0, -1);
+    updateFormula();
+  }
+  // Arithmatic Functions (+-×÷)
+  function add(firstNum, secondNum) {
+    return firstNum + secondNum;
+  }
+  
+  function minus (firstNum, secondNum) {
+    return firstNum - secondNum;
+  }
+  function multiply (firstNum, secondNum){
+    return (firstNum* 10) * (secondNum*10) / 100;
+  }
+  function divide (firstNum, secondNum) {
+    var result = firstNum/secondNum;
+    var isValid = result <= Number.MAX_SAFE_INTEGER && result >= Number.MIN_SAFE_INTEGER;
+    return isValid ? result : "This is not a number";
+  }
+  function holdValue (firstNum, secondNum) {
+    return firstNum;
+  }
+  // Update: result; Restore: first, second, operator
+  function evaluate() {
+    // set second equal first if only second is missing
+    if (first != "" && second == "" && operator != null) second = first;
+    // if first, second and operator all exists, call operator and get result
+    if (first != "" && second != "" && operator!=null) {
+      result = operator(Number(first), Number(second));
+    } else if (operator == null) {
+      // if user click '=' before clicking an operator, compliment missing operator/first/second to proper value
+      first = first=="" ? 0 : first;
+      second = second=="" ? 0 : second;
+      operator = operator==null ? holdValue : operator;
+      evaluate()
+    }
+    updateResult();
+  };
+  // Here are the listeners for buttons.
+  // Create listeners for "=" button 
+  document.getElementById("=").addEventListener("click", function(){
+    if (result == null) evaluate();
+    else {
+      first = result + ""; // accumulative calculation
+      evaluate();
+    }
+    // set formula to "", without rendering to screen 
+    formula = "";
+  });
+ // Create listeners for numberKeys: 1234567890 and '.'
+ Array.prototype.forEach.call(numberKeys, function(element, index) {
+    element.addEventListener("click", function(){
+      var ch = element.innerHTML;
+      // clear all data if result is not null. 
+      if (result != null) {
+        // For example, if you click 1+1= then click a number, you are expecting a new calculation
+        clear(); updateFormula; updateResult; //restore to initial state
+      }
+      // adding digit to first or second; DO NOT ADD if ch is '.' and '.' already exists 
+      if (operator == null && second == "") {
+        if (ch != '.' || !first.includes('.')) {
+          first += ch; formula += ch;
+        }
+      } else {
+        if (ch != '.' || !second.includes('.')) {
+          second += ch; formula += ch;
+        }
+      }
+      updateFormula();
+    });
+  });
+  // listeners for binary operation keys : +-×÷
+  Array.prototype.forEach.call(binaryKeys, function(element, index) {
+    element.addEventListener("click", function(){
+      // get type of binary operator; one of +-×÷
+      var ch = element.innerHTML; 
+      // If operator already exist, delete last character in formula and add new character
+      if (operator != null && second == "") formula = formula.slice(0, -1); 
+      // if formula is empty, we add result before adding operator
+      if (formula == "") formula += result==null ? 0 : result;
+      formula += ch;
+      updateFormula();
+      // evaluate if (first, second and operator) exist before click this operation key
+      if (first != "" && second != "" && operator != null) {
+        evaluate(); 
+        // recover to initial state after evaluate
+        first = ""; second = ""; operator = null; 
+      }
+      // if first is "", cut result value and paste to first.
+      if (first == "") {
+        first = "" + result == null ? 0 : result;
+        result = null;
+      }
+      // assign value to operator (pointer to function definition)
+      switch (ch) {
+        case '+':
+          operator = add;
+          break;
+        case '-':
+          operator = minus;
+          break;
+        case '×':
+          operator = multiply;
+          break;
+        case '÷':
+          operator = divide;
+          break;
+        default:
+          operand = holdValue;
+      }
+    });
+  });
+  // Create listeners for clear buttons
+  Array.prototype.forEach.call(clearKeys, function (element, index) {
+    element.addEventListener("click", function(){
+      var ch = element.innerHTML;
+      switch (ch) {
+        case "DEL":
+          del();
+          break;
+        case 'C':
+          clear();
+          break;
+        case "CE":
+          clearSecond();
+          break;
+      }
+    });
+  });
+</script>
+
+</html>

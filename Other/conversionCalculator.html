@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Calculator</title>
+  <style>
+body{
+  background-color: black;
+}
+.main{
+  margin: black;
+  background-color: black;
+  font: Arial;
+  margin: 0;
+}
+.topbar{
+color:white;
+text-align: center;
+}
+.calculator{
+  width: 600px;
+  margin: 50px auto;
+  float: center;
+  background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+  border:2px solid gray;
+}
+.result, .formula{
+  height: 40px;
+  margin: 5px;
+  border: 2px solid gray;
+}
+.table{
+  text-align: center;
+  height: 500px;
+  width:98%; margin: 1%;
+  border: 2px solid gray;
+}
+td {
+  border: 2px solid gray;
+}
+button {
+  font-size: large;
+  height: 100%;
+  width: 100%;
+}
+  </style>
+  
+  </head>
+<body>
+  <div class="main">
+    <div class="topbar">
+      Comming Soon
+    </div>
+    <div class="calculator">
+      <div class="screen">
+        <div class="result">
+          <p id="result">
+          </p>
+        </div>
+        <div class="formula">
+          <p id="formula">
+          </p>
+        </div>
+      </div>
+	   <div class="buttons">
+        <table class="table">
+          <tr>
+            <td><button class = "representation" id = "Dec->Bin" >Dec->Bin</button></td>
+			<td><button class = "number" id = "7" >7</button></td>
+            <td><button class = "number" id = "8" >8</button></td>
+            <td><button class = "number" id = "9" >9</button></td>
+          </tr>
+		  <tr>
+		   <td><button class = "representation" id = "Bin->Dec" >Bin->Dec</button></td>
+		    <td><button class = "number" id = "4" >4</button></td>
+            <td><button class = "number" id = "5" >5</button></td>
+            <td><button class = "number" id = "6" >6</button></td>
+		  </tr>
+		  <tr>
+		   <td><button class = "representation" id = "Dec->Hex" >Dec->Hex</button></td>
+		     <td><button class = "number" id = "1" >1</button></td>
+            <td><button class = "number" id = "2" >2</button></td>
+            <td><button class = "number" id = "3" >3</button></td>
+		  </tr>
+		  
+		  <tr>
+		   <td><button class = "representation" id = "Hex->Dec" >Hex->Dec</button></td>
+		    <td><button class = "alphabet" id = "A" >A</button></td>
+            <td><button class = "alphabet" id = "B" >B</button></td>
+            <td><button class = "alphabet" id = "C" >C</button></td>
+			<td><button class = "alphabet" id = "D" >D</button></td>
+            <td><button class = "alphabet" id = "E" >E</button></td>
+            <td><button class = "alphabet" id = "F" >F</button></td>
+		  </tr>
+		   <tr>
+		   <td><button class = "representation" id = "Dec->Oct" >Dec->Oct</button></td>
+		  </tr>
+		   <tr>
+		   <td><button class = "representation" id = "Oct->Dec" >Oct->Dec</button></td>
+		  </tr>
+		   </table>
+      </div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript">
+  var first = ""; // first number
+  var second = ""; // second number
+  var operand = null;
+  var result = 0; // store result
+  var formula = ""; // display formula
+  
+  const numberKeys = document.getElementsByClassName("number");
+  const representationConversionKeys = document.getElementsByClassName("representation");
+  const alphabetKeys = document.getElementsByClassName("alphabet");
+  const memoryKeys = document.getElementsByClassName("memory");
+  const extraKeys = document.getElementsByClassName("extra");
+  const binaryKeys = document.getElementsByClassName("binary");
+  const clearKeys = document.getElementsByClassName("clear");
+  // Call this function to change the display of result
+  function updateResult() {
+    document.getElementById("result").innerHTML = result;
+  };
+  // Restore first, second, operand, result, formula and update displays
+  function clear(){
+    first = ""; 
+    second = ""; 
+    operand = null;
+    result = 0; 
+    formula = ""; 
+    updateFormula();
+    updateResult();
+  }
+  // Call this function to change the display of formula
+  function updateFormula() {
+    document.getElementById("formula").innerHTML = formula;
+  };
+  // Create listeners for numberKeys
+  Array.prototype.forEach.call(numberKeys, function(element, index) {
+    element.addEventListener("click", function(){
+      var ch = element.innerHTML;
+      if (operand == null) first += ch;
+      formula += ch;
+      updateFormula();
+    });
+  });
+  
+  //Create listners for alphabet keys
+  Array.prototype.forEach.call(alphabetKeys, function(element, index) {
+    element.addEventListener("click", function(){
+      var ch = element.innerHTML;
+      if (operand == null) first += ch;
+      formula += ch;
+      updateFormula();
+    });
+  });
+  
+  // Create listeners for binary operation keys
+  Array.prototype.forEach.call(binaryKeys, function(element, index) {
+    element.addEventListener("click", function(){
+      var ch = element.innerHTML;
+      formula += ch;
+      updateFormula();
+      if (operand == null) {
+        operand = ch;
+        if (first == null) first = result==0 ? 0 : result;
+      } else {
+        if (second != null) {
+          evaluate();
+        }
+      }
+    });
+  });
+  
+ //Create listeners for representation - conversion keys
+  Array.prototype.forEach.call(representationConversionKeys, function(element, index) {
+    element.addEventListener("click", function(){
+      var ch = element.innerHTML;
+      formula += ch;
+      updateFormula();
+      if (operand == null) {
+        operand = ch;
+        if (first == null) first = result==0 ? 0 : result;
+      } else {
+        if (second != null) {
+          evaluate();
+        }
+      }
+    });
+  });
+  
+  
+  // Evaluate NOT DONE!!!!!! Add only
+  function evaluate() {
+    result = Number(first)+Number(second);
+    first = null; second = null; operand = null;
+    updateResult();
+  };
+  // Create listeners for add operation
+  document.getElementById("=").addEventListener("click", function(){
+    evaluate();
+  });
+  // Create listeners for clear buttons
+  Array.prototype.forEach.call(clearKeys, function (element, index) {
+    element.addEventListener("click", function(){
+      clear();
+    });
+  });
+</script>
+
+</html>

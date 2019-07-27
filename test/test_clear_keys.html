@@ -1,0 +1,80 @@
+<!-- Created by Yi on 07/05 -->
+<!-- This file is to test clear keys (C, CE and DEL) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Test_Clear_Keys</title>
+</head>
+<body>
+  <h1>Test plan for C, CE and DEL keys</h1>
+  <ul>Test1
+    <li>Key Pressed: 1+1DEL=</li>
+    <li>Showed on result: "1"</li>
+    <li>Expected result: "1"</li>
+  </ul>
+  <ul>Test2
+      <li>Key Pressed: 111DEL=</li>
+      <li>Showed on result: "111"</li>
+      <li>Expected result: "111"</li>
+  </ul>
+  <ul>Test3
+      <li>Key Pressed: DEL</li>
+      <li>Showed on result: ""</li>
+      <li>Expected result: ""</li>
+  </ul>
+  <ul>Test4
+      <li>Key Pressed: 1+11DEL=</li>
+      <li>Showed on result: "2"</li>
+      <li>Expected result: "2"</li>
+  </ul>
+  <ul>Test5
+      <li>Key Pressed: 1+1.1DEL=</li>
+      <li>Showed on result: "2"</li>
+      <li>Expected result: "2"</li>
+  </ul>
+  <ul>Test6
+      <li>Key Pressed: 1+1.1DELDEL=</li>
+      <li>Showed on result: "2"</li>
+      <li>Expected result: "2"</li>
+  </ul>
+  <ul>Test6
+      <li>Key PressedPressed: 1+1DELDELDELDEL=</li>
+      <li>Showed on result: "1" with "1+" on formula</li>
+      <li>Expected result: "1" with "1+" on formula</li>
+  </ul>
+  <ul>Test7
+      <li>Key Pressed: 2.4+3CE=</li>
+      <li>Showed on result: "2.4"</li>
+      <li>Expected result: "2.4"</li>
+  </ul>
+  <ul>Test8
+      <li>Key Pressed: 2+CE=</li>
+      <li>Showed on result: "2" with "2+" on formula</li>
+      <li>Expected result: "2" with "2+" on formula</li>
+  </ul>
+  <ul>Test9
+      <li>Key Pressed: +DELDELCE=</li>
+      <li>Showed on result: "0" with "0+" on formula</li>
+      <li>Expected result: "0" with "0+" on formul</li>
+  </ul>
+  <ul>Test10
+      <li>Key Pressed: 1+3*9/8C</li>
+      <li>Showed on result: "0"</li>
+      <li>Expected result: "0"</li>
+  </ul>
+  <ul>Test11
+      <li>Key Pressed: C</li>
+      <li>Showed on result: "0"</li>
+      <li>Expected result: "0"</li>
+  </ul>
+  <ul>Test12
+      <li>Key Pressed: 1+=C</li>
+      <li>Showed on result: "0"</li>
+      <li>Expected result: "0"</li>
+  </ul>
+</body>
+
+</html>
